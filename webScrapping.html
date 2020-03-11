@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+     $(document).ready(function(){
+        $.getJSON('headlinekayis.json',function(tes){
+            var headlineNews = '';
+            var i = 1;
+            headlineNews += "<table border='1'><tr><td>No</td><td>Kategori</td><td>Judul Artikel</td><td>Waktu Publish</td><td>Waktu Pengambilan</td></tr>"
+            $.each(tes, function(key, value) {
+                headlineNews += '<tr>';
+                headlineNews += '<td>'+i+'</td>';
+                headlineNews += '<td>'+ value.Kategori +'</td>'
+                headlineNews += '<td>'+ value.Judul +'</td>'
+                headlineNews += '<td>'+ value.WaktuPublish +'</td>'
+                headlineNews += '<td>'+ value.TglPengambilan +'</td>'
+                headlineNews += '</tr>';
+                i = i + 1;
+            });
+            $('#headlinee').append(headlineNews);
+        });
+    });
+</script>
+<body>
+    <h1>Headline Republika Online</h1>
+    <div id="headlinee"></div>
+</body>
+</html>
